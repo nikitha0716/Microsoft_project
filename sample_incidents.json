@@ -1,0 +1,67 @@
+[
+    {
+        "incident_id": "INC-1821",
+        "service": "Payment API",
+        "severity": "SEV-1",
+        "symptoms": [
+            "HTTP 503 Service Unavailable",
+            "Database connection timeout",
+            "Connection pool exhausted",
+            "Retry attempts exceeded"
+        ],
+        "root_cause": "Database connection pool exhaustion",
+        "resolution": "Increased database connection pool from 50 to 100 and restarted the payment service",
+        "runbook": "payment-db-connection-pool-v2",
+        "outcome": "SUCCESS",
+        "resolution_time": "7 minutes",
+        "post_mortem": "Added database connection pool monitoring and alerts"
+    },
+    {
+        "incident_id": "INC-1642",
+        "service": "Payment API",
+        "severity": "SEV-1",
+        "symptoms": [
+            "HTTP 503 errors",
+            "Database timeout",
+            "High database connection utilization"
+        ],
+        "root_cause": "Database connection pool exhaustion",
+        "resolution": "Increased database connection pool size and restarted the payment service",
+        "runbook": "payment-db-connection-pool-v2",
+        "outcome": "SUCCESS",
+        "resolution_time": "9 minutes",
+        "post_mortem": "Added monitoring for database connection pool utilization"
+    },
+    {
+        "incident_id": "INC-1519",
+        "service": "Order API",
+        "severity": "SEV-2",
+        "symptoms": [
+            "HTTP 503",
+            "Database connection timeout",
+            "Requests failing intermittently"
+        ],
+        "root_cause": "Database connection pool exhausted",
+        "resolution": "Increased database connection pool capacity",
+        "runbook": "database-connection-pool-v1",
+        "outcome": "SUCCESS",
+        "resolution_time": "11 minutes",
+        "post_mortem": "Added database connection pool utilization monitoring"
+    },
+    {
+        "incident_id": "INC-1402",
+        "service": "Payment API",
+        "severity": "SEV-1",
+        "symptoms": [
+            "HTTP 500 errors",
+            "Redis out-of-memory error",
+            "Redis memory usage above 95%"
+        ],
+        "root_cause": "Redis memory exhaustion caused by expired keys not being removed",
+        "resolution": "Removed expired Redis keys and increased Redis memory allocation",
+        "runbook": "redis-memory-v3",
+        "outcome": "SUCCESS",
+        "resolution_time": "12 minutes",
+        "post_mortem": "Added Redis memory monitoring and alerting"
+    }
+]
